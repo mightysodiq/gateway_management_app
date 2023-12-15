@@ -30,9 +30,9 @@ const GatewayList = () => {
         <div className="holders">
           <form className="forgotpassword-form" action="">
             <div className="forget">
-              <h5>SerialNumber</h5>
+              <h2>SerialNumber</h2>
               <input
-                className="form-control p-3"
+                // className="form-control p-5"
                 placeholder="Enter your serial number"
                 type= "string"
                 value={serialNumber}
