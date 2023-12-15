@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../../src/styles/GatewayList.css";
 
 const GatewayList = () => {
   const [gateways, setGateways] = useState([]);
-
+  const [serialNumber, setserialNumber] = useState();
+  const [loading, setLoading] = useState(false);
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+  
+   };
   useEffect(() => {
     const fetchGateways = async () => {
       try {
@@ -18,8 +25,32 @@ const GatewayList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Gateway List</h2>
+   <>
+       <div className="forgotpassword">
+        <div className="holders">
+          <form className="forgotpassword-form" action="">
+            <div className="forget">
+              <h5>SerialNumber</h5>
+              <input
+                className="form-control p-3"
+                placeholder="Enter your serial number"
+                type= "string"
+                value={serialNumber}
+                onChange={(e) => setserialNumber(e.target.value)}
+              />
+              <button className="forgotpassword-send" onClick={handleSubmit}>
+                {loading ? "verifying..." : "submit"}
+              </button>
+              </div>
+          </form>    
+        </div>      
+      </div>
+
+
+
+
+    
+     <h2>Gateway List</h2>
       <ul>
         {gateways.map((gateway) => (
           <li key={gateway.serialNumber}>
@@ -27,7 +58,8 @@ const GatewayList = () => {
           </li>
         ))}
       </ul>
-    </div>
+       
+    </>  
   );
 };
 
